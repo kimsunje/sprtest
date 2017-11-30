@@ -5,7 +5,7 @@ public class userDto {
 	private String USER_EMAIL;
 	private String USER_PASSWORD;
 	private int AUTH_LEV;
-	
+	 
 	
 	
 	public userDto() {}
