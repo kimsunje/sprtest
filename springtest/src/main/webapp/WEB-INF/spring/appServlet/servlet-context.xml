@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- View 관련 Context -->
+	
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
@@ -26,6 +26,23 @@
 	<!-- Component Scan -->
 	<context:component-scan base-package="com.spring.test" />
 	<context:component-scan base-package="com.spring.controller" />
+	<context:component-scan base-package="com.spring.service" />
+	<context:component-scan base-package="com.spring.dao" />
+	
+	<!-- tiles 작업할 수 있도록 설정 -->
+	
+	<beans:bean id="tilesviewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles2.TilesView" />
+		<beans:property name="order" value="1" />
+	</beans:bean>
+	
+	
+
+	
+	
+	
 	
 	
 	

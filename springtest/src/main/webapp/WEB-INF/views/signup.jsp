@@ -30,17 +30,23 @@
  
 function checkEmail(){
 	var inputemail=$("#InputEmail").val();
-	alert(inputemail);
-	<!--
+	//alert(inputemail);
+	
 	$.ajax({
 		data :{
 			email:inputemail
 		},
 		
-		url:"/index.do",
+		url:"/emailCheck.do",
+		type:"GET",
+		success:function(email){
+			var email2=email;
+			alert(email2);
+			
+		}
 		
 	})
-	-->
+
 	
 }
 </script>
