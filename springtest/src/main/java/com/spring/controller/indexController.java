@@ -9,7 +9,7 @@ public class indexController {
 	
 	@RequestMapping("/index.do")
 	public String view() {
-		return "index";
+		return "index"; 
 	} 
 	
 
