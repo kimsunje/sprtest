@@ -28,8 +28,10 @@ public class signupController {
 		System.out.println("emailCheck Controller Start");
 		ModelAndView mav = new ModelAndView();
 		
-		int emailCheck=3;
+		boolean duplicateCheck=false;
 		String cemail=email;
+		
+		//service.
 		
 		
 		mav.addObject("email",cemail);
