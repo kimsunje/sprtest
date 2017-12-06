@@ -14,8 +14,9 @@ public class registrationServiceImpl implements registrationService{
 	
 	@Override
 	public boolean emailCheck(String email) {
-		// TODO Auto-generated method stub
-		return false;
+		System.out.println("Service »£√‚ µ ");
+		System.out.println("Email:"+email);
+		return DAO.emailCheck(email);
 	}
 
 }

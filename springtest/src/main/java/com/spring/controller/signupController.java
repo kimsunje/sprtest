@@ -28,8 +28,19 @@ public class signupController {
 		System.out.println("emailCheck Controller Start");
 		ModelAndView mav = new ModelAndView();
 		
-		boolean duplicateCheck=false;
+		System.out.println("RequestParam으로 바로 받은 변수");
+		System.out.println(email);
 		String cemail=email;
+		
+		System.out.println("서비스 호출 전");
+		boolean duplicateCheck=service.emailCheck(email);
+		System.out.println("서비스 호출 후:"+duplicateCheck);
+		
+		if(duplicateCheck==true) {
+			System.out.println("중복 이메일 O");
+		}else if(duplicateCheck!=true) {
+			System.out.println("중복 이메일 X");
+		}
 		
 		//service.
 		

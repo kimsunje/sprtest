@@ -12,9 +12,9 @@
 	</typeAliases>
 	<mappers>
 	<!-- registration -->
-	<!-- 
-		<mapper resource="mapper/FundamentalMapper.xml"/>
-	 -->
+	 
+		<mapper resource="mapper/registrationMapper.xml"/>
+	 
 	</mappers>
 	
 	
