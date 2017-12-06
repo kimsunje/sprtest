@@ -14,6 +14,13 @@ public class registrationDaoImpl implements registrationDao {
 		// TODO Auto-generated method stub
 		System.out.println("DAO »£√‚ µ ");
 		System.out.println("Email:"+email);
+		/*
+		if(sqlsession.selectOne("com.registration.emailcheck",email).equals("ksj@gmail.com")) {
+			return true;
+		}else {
+			return false;
+			}
+	*/	
 		return sqlsession.selectOne("com.registration.emailcheck",email);
 	}
 
