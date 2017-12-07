@@ -29,19 +29,26 @@
 //var inputemail=$("#InputEmail").val();
  
 function checkEmail(){
-	var inputemail=$("#InputEmail").val();
+	var inputemail=$("#InputEmail").val(); 
+	//var email=$("#InputEmail").val();
 	//alert(inputemail);
-	
+	//alert("before duplicateCheck2");
+	//values=duplicateCheck2;
+	//alert(duplicateCheck2);
 	$.ajax({
-		data :{
+		 data: {
 			email:inputemail
 		},
 		
+		
 		url:"/emailCheck.do",
 		type:"GET",
+		datatype:"text",
 		success:function(email){
-			var email2=email;
-			alert(email2);
+			/* if(duplicateCheck2==true){
+			var email2=email; */
+			alert("success");
+			/* } */
 			
 		}
 		
