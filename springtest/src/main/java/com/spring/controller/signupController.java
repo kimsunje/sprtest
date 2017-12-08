@@ -23,7 +23,7 @@ public class signupController {
 	
 	
 	@ResponseBody
-	@RequestMapping(value="/emailCheck.do", method=RequestMethod.GET)
+	@RequestMapping(value="/emailCheck.do")//, method=RequestMethod.GET
 	public ModelAndView emailCheck(@RequestParam(value="email", required=false, defaultValue="")String email ) {
 		
 		System.out.println("emailCheck Controller Start");
@@ -48,6 +48,7 @@ public class signupController {
 		
 		//왜 컨트롤러에서 jsp 로 변수가 안넘어가니 왜 왜왜왜왜왜왜왜왜왜왜왜왜왜왜왜왜왜왜왜왜
 		mav.addObject("email",cemail);
+		
 		
 		/*if(duplicateCheck2==true) {
 			System.out.println("중복 이메일 O");

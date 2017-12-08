@@ -41,13 +41,15 @@ function checkEmail(){
 		},
 		
 		
-		url:"/emailCheck.do",
+		url:"/signup.do",
 		type:"GET",
 		datatype:"text",
 		success:function(email){
 			/* if(duplicateCheck2==true){
 			var email2=email; */
-			alert("success");
+			//alert("success");
+			console.log("찍혀라");
+			alert("redirect 체크")
 			/* } */
 			
 		}
