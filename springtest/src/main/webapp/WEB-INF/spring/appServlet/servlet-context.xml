@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -21,16 +22,19 @@
 		in the /WEB-INF/views directory -->
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<!-- <beans:property name="prefix" value="/WEB-INF/views/" /> -->
+		<beans:property name="prefix" value="WEB-INF/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
 
 	<!-- Component Scan -->
+	<!-- 어노테이션을 사용하기 위한 설정 -->
 	<!-- <context:component-scan base-package="com.spring.test" /> -->
 	<context:component-scan base-package="com.spring.controller" />
 	<context:component-scan base-package="com.spring.service" />
 	<context:component-scan base-package="com.spring.dao" />
+	<!-- <context:component-scan base-package="com.spring.test" /> -->
 
 	<!-- tiles 작업할 수 있도록 설정 -->
 	<beans:bean id="tilesConfigurer"
@@ -44,7 +48,7 @@
 
 
 
-	<beans:bean id="viewResolver"
+	<beans:bean id="tilesviewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass"
 			value="org.springframework.web.servlet.view.tiles3.TilesView" />

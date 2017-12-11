@@ -27,8 +27,10 @@
     
 <script type="text/javascript">
 //var inputemail=$("#InputEmail").val();
- 
+ 	var chkemail=0;
+ 	var pawdcheck=0;
 function checkEmail(){
+	
 	var inputemail=$("#InputEmail").val(); 
 	//var email=$("#InputEmail").val();
 	//alert(inputemail);
@@ -44,15 +46,24 @@ function checkEmail(){
 		url:"/signup.do",
 		type:"GET",
 		datatype:"text",
-		success:function(email){
+		success:function(data){
+			if(inputemail=="" && data=='0'){
+				alert("test");
+			}
 			/* if(duplicateCheck2==true){
 			var email2=email; */
 			//alert("success");
-			console.log("찍혀라");
-			alert("redirect 체크")
+			/* setTimeout(function() {
+				console.log("찍혀라");
+				alert("redirect 체크");
+				}, 2000); */
+			/* console.log("찍혀라");
+			alert("redirect 체크"); */
 			/* } */
 			
-		}
+		}/* fail:function(){
+			location.attr("/index.do");
+		} */
 		
 	})
 
@@ -75,7 +86,7 @@ function checkEmail(){
 			<form role="form">
 				<div class="form-group">
 					<label for="InputEmail">이메일 주소</label> <input type="email"
-						class="form-control" id="InputEmail" placeholder="이메일 주소" oninput="checkEmail()">
+						class="form-control" id="InputEmail" placeholder="이메일 주소" onkeyup="checkEmail()">
 				</div>
 				<div class="form-group">
 					<label for="InputPassword1">비밀번호</label> <input type="password"

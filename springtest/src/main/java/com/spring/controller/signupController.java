@@ -15,10 +15,14 @@ public class signupController {
 	@Autowired
 	registrationService service;
 	
+	@ResponseBody
 	@RequestMapping("/signup.do")
-	public String signupView() {
-		
-		return "signup";
+	public ModelAndView signupView(@RequestParam(value="email",required=false,defaultValue="")String email) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("email", email);
+		System.out.println("JSP에서 가져온 변수:"+email);
+		//return "signup";
+		return mav;
 	}
 	
 	
@@ -35,7 +39,7 @@ public class signupController {
 		
 		System.out.println("서비스 호출 전");
 		//boolean duplicateCheck=service.emailCheck(email);
-	//	System.out.println("서비스 호출 후:"+duplicateCheck);
+		//System.out.println("서비스 호출 후:"+duplicateCheck);
 		
 		boolean duplicateCheck2=true;
 		
