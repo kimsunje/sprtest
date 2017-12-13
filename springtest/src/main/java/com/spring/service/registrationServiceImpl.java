@@ -13,7 +13,7 @@ public class registrationServiceImpl implements registrationService{
 	registrationDao DAO;
 	
 	@Override
-	public boolean emailCheck(String email) {
+	public int emailCheck(String email) {
 		System.out.println("Service »£√‚ µ ");
 		System.out.println("Email:"+email);
 		return DAO.emailCheck(email);

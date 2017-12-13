@@ -10,7 +10,7 @@ public class registrationDaoImpl implements registrationDao {
 	SqlSession sqlsession;
 	
 	@Override
-	public boolean emailCheck(String email) {
+	public int emailCheck(String email) {
 		// TODO Auto-generated method stub
 		System.out.println("DAO »£√‚ µ ");
 		System.out.println("Email:"+email);

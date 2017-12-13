@@ -1,5 +1,5 @@
 package com.spring.service;
 
 public interface registrationService {
-	boolean emailCheck(String email);
+	int emailCheck(String email);
 }
