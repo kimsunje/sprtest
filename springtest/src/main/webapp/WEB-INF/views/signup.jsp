@@ -47,7 +47,7 @@ function checkEmail(){
 		type:"GET",
 		datatype:"text",
 		success:function(data){
-			if(inputemail=="" && data=='0'){
+			/* if(inputemail=="" && data=='0') */{
 				alert("test");
 			}
 			/* if(duplicateCheck2==true){
@@ -86,7 +86,7 @@ function checkEmail(){
 			<form role="form">
 				<div class="form-group">
 					<label for="InputEmail">捞皋老 林家</label> <input type="email"
-						class="form-control" id="InputEmail" placeholder="捞皋老 林家" onkeyup="checkEmail()">
+						class="form-control" id="InputEmail" placeholder="捞皋老 林家" onblur="checkEmail()">
 				</div>
 				<div class="form-group">
 					<label for="InputPassword1">厚剐锅龋</label> <input type="password"

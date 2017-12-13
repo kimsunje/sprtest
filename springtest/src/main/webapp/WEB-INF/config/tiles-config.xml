@@ -9,20 +9,24 @@
 		<put-attribute name="content" value="/WEB-INF/tiles/layout/content.jsp" />
 	</definition>
 
-
-<!-- 뷰 하나만 쓰는 설정 -->
+<!-- Index 페이지 세팅 -->
 <definition name="indexTemplate2" template="/WEB-INF/tiles/layout/indexLayout2.jsp">
-		
+		<put-attribute name="content" value="/WEB-INF/tiles/layout/content.jsp" />
 	</definition>
 
-
+<!-- 
 	<definition name="index2" extends="indexTemplate">
 	</definition>
-	
+ -->	
 	
 	<!--  index.do -->
 	<definition name="index" extends="indexTemplate2">
 		<put-attribute name="content" value="/WEB-INF/views/index.jsp"/>
+	</definition>
+	
+	<!-- signup.do -->
+	<definition name="signup" extends="indexTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/signup.jsp"/>
 	</definition>
  
 </tiles-definitions>

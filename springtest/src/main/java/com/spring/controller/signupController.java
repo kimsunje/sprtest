@@ -22,6 +22,8 @@ public class signupController {
 		mav.addObject("email", email);
 		System.out.println("JSP에서 가져온 변수:"+email);
 		//return "signup";
+		
+		//여기서 파라메터 여러개 써서 처리 
 		return mav;
 	}
 	
