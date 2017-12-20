@@ -17,19 +17,24 @@ public class signupController {
 
 	@ResponseBody
 	@RequestMapping("/signup.do")
-	public ModelAndView signupView(@RequestParam(value = "email", required = false, defaultValue = "") String email) {
+	public ModelAndView signupView(
+			@RequestParam(value = "email", required = false, defaultValue = "") String email,
+			@RequestParam(value = "password1", required = false, defaultValue = "") String password1,
+			@RequestParam(value = "password2", required = false, defaultValue = "") String password2) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("email", email);
+		/*mav.addObject("email", email);*/
 		System.out.println("JSP에서 가져온 변수:" + email);
 		// return "signup";
 		int duplicatecheck = service.emailCheck(email);
+		mav.addObject("duplicatecheck", duplicatecheck);
 		
 		if (duplicatecheck == 1) {
 			System.out.println("중복");
 		}else {
 			System.out.println("중복아님");
 		}
-
+		
+		//mav.setViewName("emailcheck");
 		// 여기서 파라메터 여러개 써서 처리
 		return mav;
 	}

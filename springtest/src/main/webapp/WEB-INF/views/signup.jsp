@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,10 +29,11 @@
     
 <script type="text/javascript">
 //var inputemail=$("#InputEmail").val();
- 	var chkemail=0;
- 	var pawdcheck=0;
+ 
 function checkEmail(){
-	
+	var chkemail=0;
+ 	var pawdcheck=0;
+ 	
 	var inputemail=$("#InputEmail").val(); 
 	//var email=$("#InputEmail").val();
 	//alert(inputemail);
@@ -46,9 +49,17 @@ function checkEmail(){
 		url:"/signup.do",
 		type:"GET",
 		datatype:"text",
+		
 		success:function(data){
-			/* if(inputemail=="" && data=='0') */{
-				alert("test");
+			//if문 jstl로 처리하기
+			if(inputemail==null || inputemail=="") {
+				alert("이메일을 입력해주세요.");
+			}else if(chkemail==1){
+				alert("chkemail: "+chkemail);
+				alert("중복");
+			}else if(chkemail==0){
+				alert("chkemail: "+chkemail);
+				alert("사용할 수 있는 이메일");
 			}
 			/* if(duplicateCheck2==true){
 			var email2=email; */
@@ -67,6 +78,23 @@ function checkEmail(){
 		
 	})
 
+	
+}
+
+function checkPassword(){
+	var password1=$("#InputPassword1").val();
+	var password2=$("#InputPassword2").val();
+	alert("password1"+password1);
+	alert("password2"+password2);
+	var tag1='<p class="help-block">비밀번호 일치/p>';
+	var tag2='<p class="help-block">비밀번호 불일치/p>';
+	if(password1==password2){
+		alert("똑같음");
+		
+	} else{
+		alert("다름");
+	}
+	
 	
 }
 </script>
@@ -94,7 +122,7 @@ function checkEmail(){
 				</div>
 				<div class="form-group">
 					<label for="InputPassword2">비밀번호 확인</label> <input type="password"
-						class="form-control" id="InputPassword2" placeholder="비밀번호 확인">
+						class="form-control" id="InputPassword2" placeholder="비밀번호 확인" onblur="checkPassword()">
 					<p class="help-block">비밀번호 확인을 위해 다시한번 입력 해 주세요</p>
 				</div>
 				<div class="form-group">
