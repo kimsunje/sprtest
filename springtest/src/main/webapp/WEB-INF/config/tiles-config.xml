@@ -28,5 +28,15 @@
 	<definition name="signup" extends="indexTemplate">
 		<put-attribute name="content" value="/WEB-INF/views/signup.jsp"/>
 	</definition>
+	
+	<!-- nosindex.do -->
+	<!-- 
+	<definition name="nosindex" extends="indexTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/nosindex.jsp"/>
+	</definition> -->
  
+ <!-- fds.do -->
+	<!-- <definition name="nosindex" extends="indexTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/test.jsp"/>
+	</definition> -->
 </tiles-definitions>

@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,9 +30,12 @@
     
 <script type="text/javascript">
 //var inputemail=$("#InputEmail").val();
- 
+ $(document).ready(function(){
+	// alert("blur 호출");
+	$("#InputEmail").focus(); 
+ });
 function checkEmail(){
-	var chkemail=0;
+	
  	var pawdcheck=0;
  	
 	var inputemail=$("#InputEmail").val(); 
@@ -52,14 +56,31 @@ function checkEmail(){
 		
 		success:function(data){
 			//if문 jstl로 처리하기
+			//chkemail = "${duplicatecheck}";
+			/* alert("duplicatecheck"+"${duplicatecheck}") */
+			
+			//chkemail =test();
+			//alert(chkemail);
+			var chkemail = parseInt('${duplicatecheck}');
+			alert("chkemail 타입"+typeof(chkemail));
+			alert("duplicate 타입"+typeof('${duplicatecheck}'));
+			alert("duplicatecheck"+'${duplicatecheck}');
+			alert(chkemail);
 			if(inputemail==null || inputemail=="") {
-				alert("이메일을 입력해주세요.");
+				//alert("이메일을 입력해주세요.");
+				$(".form-group:first p").empty();
+				$(".form-group:first").append("<p>email을 입력해 주세요 <p>");
 			}else if(chkemail==1){
-				alert("chkemail: "+chkemail);
-				alert("중복");
+				//alert("chkemail: "+chkemail);
+				//alert("중복");
+				$(".form-group:first p").empty();
+				$(".form-group:first").append("<p>append test 불가<p>");
 			}else if(chkemail==0){
-				alert("chkemail: "+chkemail);
-				alert("사용할 수 있는 이메일");
+				//alert("chkemail: "+chkemail);
+				//$("#InputEmail").innerHtml("중복");
+				$(".form-group:first p").empty();
+				$(".form-group:first").append("<p>append test 사용가능<p>");
+				//alert("사용할 수 있는 이메일");
 			}
 			/* if(duplicateCheck2==true){
 			var email2=email; */
@@ -72,9 +93,10 @@ function checkEmail(){
 			alert("redirect 체크"); */
 			/* } */
 			
-		}/* fail:function(){
+		}, fail:function(){
+			alert("실패");
 			location.attr("/index.do");
-		} */
+		} 
 		
 	})
 
@@ -97,6 +119,11 @@ function checkPassword(){
 	
 	
 }
+
+<%-- function test(){
+	var querycheck=<%request.getparameter("duplicatecheck")%>
+	return querycheck;
+} --%>
 </script>
 
 
@@ -125,15 +152,7 @@ function checkPassword(){
 						class="form-control" id="InputPassword2" placeholder="비밀번호 확인" onblur="checkPassword()">
 					<p class="help-block">비밀번호 확인을 위해 다시한번 입력 해 주세요</p>
 				</div>
-				<div class="form-group">
-					<label>약관 동의</label>
-					<div data-toggle="buttons">
-						<label class="btn btn-primary active"> <span
-							class="fa fa-check"></span> <input id="agree" type="checkbox"
-							autocomplete="off" checked>
-						</label> <a href="#">이용약관</a>에 동의합니다.
-					</div>
-				</div>
+				
 				<div class="form-group text-center">
 					<button type="submit" class="btn btn-info">
 						회원가입<i class="fa fa-check spaceLeft"></i>
@@ -204,8 +223,7 @@ function checkPassword(){
 	</article>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="/resources/js/bootstrap.min.js"></script>
 </body>

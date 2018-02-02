@@ -41,5 +41,22 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping> 
+	
+	<servlet>
+		<servlet-name>PluginFreeServlet</servlet-name>
+		<servlet-class>com.nprotect.pluginfree.PluginFreeServlet</servlet-class>
+		<init-param>
+			<param-name>ResponseEncoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<!-- <init-param> <param-name>PropertiesPath</param-name> <param-value>%WEB-INF%/properties/nprotect.properties</param-value> 
+			</init-param> <init-param> <param-name>PropertiesPath</param-name> <param-value>Some 
+			Path of Properties file\nprotect.properties</param-value> </init-param> -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PluginFreeServlet</servlet-name>
+		<url-pattern>/nppfs.servlet.do</url-pattern>
+	</servlet-mapping>
 
 </web-app>

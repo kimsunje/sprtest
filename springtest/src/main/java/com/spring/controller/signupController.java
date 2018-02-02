@@ -2,8 +2,9 @@ package com.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,26 +18,38 @@ public class signupController {
 
 	@ResponseBody
 	@RequestMapping("/signup.do")
-	public ModelAndView signupView(
+	public Model signupView(
 			@RequestParam(value = "email", required = false, defaultValue = "") String email,
 			@RequestParam(value = "password1", required = false, defaultValue = "") String password1,
-			@RequestParam(value = "password2", required = false, defaultValue = "") String password2) {
+			@RequestParam(value = "password2", required = false, defaultValue = "") String password2,
+			Model model) {
+		
 		ModelAndView mav = new ModelAndView();
 		/*mav.addObject("email", email);*/
 		System.out.println("JSP에서 가져온 변수:" + email);
 		// return "signup";
-		int duplicatecheck = service.emailCheck(email);
-		mav.addObject("duplicatecheck", duplicatecheck);
 		
+		int duplicatecheck = service.emailCheck(email);
+		System.out.println("중복쿼리 리턴값 "+duplicatecheck);
+		
+		//중복체크 true, false return 값 추가
+		
+		
+		//테스트 구문
 		if (duplicatecheck == 1) {
 			System.out.println("중복");
 		}else {
 			System.out.println("중복아님");
 		}
 		
+		//duplicatecheck 값 클라이언트로 전달
+		System.out.println("addObject 윗 구문 duplicatecheck 값"+duplicatecheck);
+		//mav.addObject("duplicatecheck", duplicatecheck);
+		//model.addAttribute("duplicatecheck",duplicatecheck);
+		model.addAttribute("duplicatecheck",duplicatecheck);
 		//mav.setViewName("emailcheck");
 		// 여기서 파라메터 여러개 써서 처리
-		return mav;
+		return model;
 	}
 
 	@ResponseBody
