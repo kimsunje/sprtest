@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,12 +28,12 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
 <script type="text/javascript">
 //var inputemail=$("#InputEmail").val();
  $(document).ready(function(){
 	// alert("blur 호출");
-	$("#InputEmail").focus(); 
+	$("#InputEmail").blur(); 
  });
 function checkEmail(){
 	
@@ -45,44 +46,62 @@ function checkEmail(){
 	//values=duplicateCheck2;
 	//alert(duplicateCheck2);
 	$.ajax({
-		 data: {
+		 
+		
+		async:"false",
+		url:"/signup.do",
+		type:"POST",
+		contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+		data: {
 			email:inputemail
 		},
+		datatype:"json",
 		
-		
-		url:"/signup.do",
-		type:"GET",
-		datatype:"text",
 		
 		success:function(data){
+			//console.log(data);
+			var chkemail=new Object;
+			chkemail="${data['duplcheck']}"
+			console.log(chkemail);
+			//console.log(chkemail);
+		}, fail:function(){
+			alert("실패");
+			location.attr("/index.do");
+		} 
+		
+	})
 			//if문 jstl로 처리하기
 			//chkemail = "${duplicatecheck}";
 			/* alert("duplicatecheck"+"${duplicatecheck}") */
 			
 			//chkemail =test();
 			//alert(chkemail);
-			var chkemail = parseInt('${duplicatecheck}');
-			alert("chkemail 타입"+typeof(chkemail));
-			alert("duplicate 타입"+typeof('${duplicatecheck}'));
-			alert("duplicatecheck"+'${duplicatecheck}');
-			alert(chkemail);
-			if(inputemail==null || inputemail=="") {
+			//console.log(data);
+			//console.log(data);
+			//console.log('${data.abc}');
+// 			alert(typeof(chkemail));
+// 			alert(chkemail);
+			//alert("chkemail 타입"+typeof(chkemail));
+			//alert("duplicate 타입"+typeof('${duplicatecheck}'));
+			//alert("duplicatecheck"+'${duplicatecheck}');
+			//alert(chkemail);
+			/* if(inputemail==null || inputemail=="") {
 				//alert("이메일을 입력해주세요.");
 				$(".form-group:first p").empty();
 				$(".form-group:first").append("<p>email을 입력해 주세요 <p>");
-			}else if(chkemail==1){
+			}else if(chkemail.equals("1")){
 				//alert("chkemail: "+chkemail);
-				//alert("중복");
+				//alert("중복"); 
 				$(".form-group:first p").empty();
 				$(".form-group:first").append("<p>append test 불가<p>");
-			}else if(chkemail==0){
+			}else if(chkemail.equals("0")){
 				//alert("chkemail: "+chkemail);
 				//$("#InputEmail").innerHtml("중복");
 				$(".form-group:first p").empty();
 				$(".form-group:first").append("<p>append test 사용가능<p>");
 				//alert("사용할 수 있는 이메일");
 			}
-			/* if(duplicateCheck2==true){
+ */			/* if(duplicateCheck2==true){
 			var email2=email; */
 			//alert("success");
 			/* setTimeout(function() {
@@ -93,12 +112,7 @@ function checkEmail(){
 			alert("redirect 체크"); */
 			/* } */
 			
-		}, fail:function(){
-			alert("실패");
-			location.attr("/index.do");
-		} 
-		
-	})
+	
 
 	
 }
@@ -129,8 +143,8 @@ function checkPassword(){
 
 </head>
 <body>
-
-
+<%String test= request.getParameter("duplicatecheckdd"); %>
+<%=test %>
 	<article class="container">
 		<div class="page-header">
 			<h1>
@@ -141,7 +155,8 @@ function checkPassword(){
 			<form role="form">
 				<div class="form-group">
 					<label for="InputEmail">이메일 주소</label> <input type="email"
-						class="form-control" id="InputEmail" placeholder="이메일 주소" onblur="checkEmail()">
+						class="form-control" id="InputEmail" placeholder="이메일 주소"
+						onblur="checkEmail()">
 				</div>
 				<div class="form-group">
 					<label for="InputPassword1">비밀번호</label> <input type="password"
@@ -149,10 +164,11 @@ function checkPassword(){
 				</div>
 				<div class="form-group">
 					<label for="InputPassword2">비밀번호 확인</label> <input type="password"
-						class="form-control" id="InputPassword2" placeholder="비밀번호 확인" onblur="checkPassword()">
+						class="form-control" id="InputPassword2" placeholder="비밀번호 확인"
+						onblur="checkPassword()">
 					<p class="help-block">비밀번호 확인을 위해 다시한번 입력 해 주세요</p>
 				</div>
-				
+
 				<div class="form-group text-center">
 					<button type="submit" class="btn btn-info">
 						회원가입<i class="fa fa-check spaceLeft"></i>
@@ -223,7 +239,7 @@ function checkPassword(){
 	</article>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	
+
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="/resources/js/bootstrap.min.js"></script>
 </body>

@@ -10,10 +10,10 @@ public class registrationDaoImpl implements registrationDao {
 	SqlSession sqlsession;
 	
 	@Override
-	public int emailCheck(String email) {
+	public String emailCheck(String email) {
 		// TODO Auto-generated method stub
-		System.out.println("DAO »£√‚ µ ");
-		System.out.println("Email:"+email);
+		System.out.println("DAO »£√‚ µ  Email:"+email);
+		
 		/*
 		if(sqlsession.selectOne("com.registration.emailcheck",email).equals("ksj@gmail.com")) {
 			return true;

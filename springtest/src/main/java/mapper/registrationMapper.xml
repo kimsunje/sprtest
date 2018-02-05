@@ -4,10 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.registration">
-	<select id="emailcheck" parameterType="String" resultType="int" >
+	<select id="emailcheck" parameterType="String" resultType="String" >
 		<!-- email duplicate check -->
 		 <!-- SELECT USER_EMAIL from USER_INFO WHERE USER_EMAIL = #{email} -->
-		 Select NVL(count(*),0) from user_info where user_email=#{email}
+		 Select count(*) from user_info where user_email=#{email}
 	</select>
 	<!--  
 	<select id="industrynews" resultType="HashMap" parameterType="String">

@@ -1,5 +1,9 @@
 package com.spring.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,45 +20,84 @@ public class signupController {
 	@Autowired
 	registrationService service;
 
-	@ResponseBody
+	
 	@RequestMapping("/signup.do")
-	public Model signupView(
+	public ModelAndView signupView(
+			String duplicatecheck,
 			@RequestParam(value = "email", required = false, defaultValue = "") String email,
 			@RequestParam(value = "password1", required = false, defaultValue = "") String password1,
-			@RequestParam(value = "password2", required = false, defaultValue = "") String password2,
-			Model model) {
+			@RequestParam(value = "password2", required = false, defaultValue = "") String password2) {
+
+		//String abc = "1";
 		
 		ModelAndView mav = new ModelAndView();
-		/*mav.addObject("email", email);*/
+		/* mav.addObject("email", email); */
+		System.out.println("초기 중복검사 변수 체크 duplicatecheck:"+duplicatecheck);
 		System.out.println("JSP에서 가져온 변수:" + email);
 		// return "signup";
+		HashMap <String, String> dupcheck=new HashMap<String, String>();
 		
-		int duplicatecheck = service.emailCheck(email);
-		System.out.println("중복쿼리 리턴값 "+duplicatecheck);
+		try {
+			if (duplicatecheck == null) {
+				System.out.println("try catch 구문 Email:"+email);
+				
+				
+				
+				
+				duplicatecheck = service.emailCheck(email);
+				System.out.println("try구문 duplicatecheck: "+duplicatecheck);
+				dupcheck.put("duplcheck",duplicatecheck);
+				System.out.println("MAP"+dupcheck.get("duplcheck"));
+				
+			}
+		} catch (Exception e) {
+			System.out.println("error");
+		}
+		System.out.println("중복쿼리 리턴값 " + duplicatecheck); 
+
+		// 중복체크 true, false return 값 추가
 		
-		//중복체크 true, false return 값 추가
 		
-		
-		//테스트 구문
-		if (duplicatecheck == 1) {
+	
+		// 테스트 구문
+		if (duplicatecheck.equals("1")) {
 			System.out.println("중복");
-		}else {
+		} else {
 			System.out.println("중복아님");
 		}
+
+		// duplicatecheck 값 클라이언트로 전달
+		System.out.println("addObject 윗 구문 duplicatecheck 값" + duplicatecheck);
+		/*Map <String, String>dupcheck=new HashMap<String, String>();
 		
-		//duplicatecheck 값 클라이언트로 전달
-		System.out.println("addObject 윗 구문 duplicatecheck 값"+duplicatecheck);
-		//mav.addObject("duplicatecheck", duplicatecheck);
-		//model.addAttribute("duplicatecheck",duplicatecheck);
-		model.addAttribute("duplicatecheck",duplicatecheck);
-		//mav.setViewName("emailcheck");
+		dupcheck.put("email",email);
+		dupcheck.put("duplcheck",duplicatecheck);*/
+		
+		/*for(int i=0; i<dupcheck.size();i++){
+			System.out.println("MAP"+dupcheck.get(i));
+		}*/
+		//mav.addObject("abc", abc);
+		mav.addObject("duplicatecheck", dupcheck.get("duplcheck"));
+		
+		// mav.setViewName("check");
+		// model.addAttribute("duplicatecheck",duplicatecheck);
+		// model.addAttribute("duplicatecheck",duplicatecheck);
+		// mav.setViewName("signup");
 		// 여기서 파라메터 여러개 써서 처리
-		return model;
+		System.out.println("해쉬맵 데이터 확인");
+		for(int i=0;i<dupcheck.size();i++){
+			
+			System.out.println(dupcheck.get("duplcheck"));
+		}
+	
+		return mav;
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/emailCheck.do") // , method=RequestMethod.GET
-	public ModelAndView emailCheck(@RequestParam(value = "email", required = false, defaultValue = "") String email) {
+	@RequestMapping(value = "/emailCheck.do")
+	// , method=RequestMethod.GET
+	public ModelAndView emailCheck(
+			@RequestParam(value = "email", required = false, defaultValue = "") String email) {
 
 		System.out.println("emailCheck Controller Start");
 		ModelAndView mav = new ModelAndView();

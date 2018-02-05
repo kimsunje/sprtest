@@ -8,7 +8,7 @@ public class DBconnectionTest {
 	                throws ClassNotFoundException, SQLException {
 	    	
 	    	
-	 /*
+	 
 	        // 1. JDBC 드라이브 로드...
 	        Class.forName("oracle.jdbc.OracleDriver");
 	        // 2. 접속정보 Connection 객체생성...
@@ -19,7 +19,7 @@ public class DBconnectionTest {
 	        System.out.println("Success DB Connection");
 	        // 5. 리소스 반환
 	        stmt.close();
-	        conn.close();*/
+	        conn.close();
 	    	
 	    	String a="a";
 	    	String b="b";

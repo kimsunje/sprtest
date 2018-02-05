@@ -13,9 +13,9 @@ public class registrationServiceImpl implements registrationService{
 	registrationDao DAO;
 	
 	@Override
-	public int emailCheck(String email) {
-		System.out.println("Service »£√‚ µ ");
-		System.out.println("Email:"+email);
+	public String emailCheck(String email) {
+		System.out.println("Service »£√‚ µ   Email:"+email);
+		
 		return DAO.emailCheck(email);
 	}
 

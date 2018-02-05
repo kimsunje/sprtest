@@ -4,9 +4,21 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
-
+	<!-- 예제  -->
+	<!-- Mybatis -->
+	<!-- servlet-context에서는 <beans:bean id= ~~~ /beans:bean> 이런식으로 선언 -->
+	<!-- root-context에서는 bean id ~~ 이렇게 선언 -->
 	
-
+<!-- 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="con" />
+		<property name="configLocation"
+			value="/WEB-INF/config/mybatis-config.xml" />
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+ -->
 
 </beans>
  
